@@ -1,4 +1,4 @@
-let fileManager = require('fileManager');
+let fileManager = require('./fileManager');
 
 module.exports = {
   parse: function(templatePath, variables){
@@ -18,6 +18,8 @@ function parseTemplate(templatePath, variables){
     template = template.replace(match[0], matchReplacement);
   }
   while(match = variableRegex.exec(template)){
+    console.log(match);
+    console.log(variables);
     template = template.replace(match[0], 'var ' + match[1] + ' = ' +variables[match[1]]);
   }
   return template;

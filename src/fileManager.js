@@ -18,11 +18,11 @@ module.exports = {
 
 
 function readFile(file){
-  return fs.readFileSync(prefix + '/' + file + extension, 'utf8');
+  return fs.readFileSync(prefix + '/' + file + extension, 'utf8').toString();
 }
 
 function readFileWithoutPrefix(filePath){
-  return fs.readFileSync(filePath);
+  return fs.readFileSync(filePath).toString();
 }
 
 function generatePrefix(filePath){
