@@ -1,8 +1,8 @@
-var fs = require('fs');
+let templateParser = require("./src/templateParser");
 module.exports = {
   build: function(template, variables)
   {
-    return parseTemplate(template, variables);
+    return templateParser.parse(template, variables);
   }
 };
 
