@@ -1,0 +1,19 @@
+{
+  "name": "reglue",
+  "version": "0.0.1",
+  "description": "javascript template engine for javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rezillien/reglue.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rezillien/reglue/issues"
+  },
+  "homepage": "https://github.com/Rezillien/reglue#readme"
+}
