@@ -7,15 +7,16 @@ module.exports = {
   input: fileManager
 };
 
-const fileRegex = /\/\/f{{\s([^}}]+)?\s}}/g;
+const fileRegex = /{\s*reglue:\s"([^"\s*};]+)?"\s*};/g;
 const variableRegex = /\/\/v{{\s([^}}]+)?\s}}/g;
+const fileBox = "function(){\nBOX\n};";
 
 function parseTemplate(templatePath, variables){
   let template = fileManager.init(templatePath);
   let match;
   while (match = fileRegex.exec(template)) {
     const matchReplacement = fileManager.read(match[1]);
-    template = template.replace(match[0], matchReplacement);
+    template = template.replace(match[0], fileBox.replace("BOX", matchReplacement));
   }
   while(match = variableRegex.exec(template)){
     console.log(match);
