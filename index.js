@@ -1,8 +1,8 @@
 let templateParser = require("./src/templateParser");
 module.exports = {
-  build: function(template, variables)
+  build: function(filePath, options, callback)
   {
-    return templateParser.parse(template, variables);
+    return callback(null, templateParser.parse(filePath, options, callback));
   }
 };
 
