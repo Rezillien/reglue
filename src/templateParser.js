@@ -7,8 +7,8 @@ module.exports = {
   input: fileManager
 };
 
-const fileRegex = /{\s*reglue:\s"([^"\s*};]+)?"\s*};/g;
-const variableRegex = /\/\/v{{\s([^}}]+)?\s}}/g;
+const fileRegex = /{{\s*reglue:\s*"([^"\s*}};]+)?"\s*}};/g;
+const variableRegex = /{{variable:\s([^}}]+)?\s}}/g;
 
 function parseTemplate(templatePath, variables, callback){
   let template = fileManager.init(templatePath);
