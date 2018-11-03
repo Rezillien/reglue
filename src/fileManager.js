@@ -1,9 +1,14 @@
+let path = require('path');
 let fs = require('fs');
 let extension = '.tjs';
 let prefix = null;
 module.exports = {
   init: function(filePath){
     prefix = generatePrefix(filePath);
+    let ext = path.extname(filePath);
+    if(ext !== ''){
+      extension = ext;
+    }
     return readFileWithoutPrefix(filePath);
   },
   read: function(file){
@@ -18,7 +23,7 @@ module.exports = {
 
 
 function readFile(file){
-  return fs.readFileSync(prefix + '/' + file + extension, 'utf8').toString();
+  return fs.readFileSync(path.join(prefix, file) + extension, 'utf8').toString();
 }
 
 function readFileWithoutPrefix(filePath){
@@ -26,7 +31,5 @@ function readFileWithoutPrefix(filePath){
 }
 
 function generatePrefix(filePath){
-  var path =filePath.split('/');
-  path.pop();
-  return path.join('/');
+  return path.dirname(filePath);
 }
