@@ -8,7 +8,7 @@ module.exports = {
 };
 
 const fileRegex = /{{\s*reglue:\s*"([^"\s*}};]+)?"\s*}};/g;
-const variableRegex = /{{variable:\s([^}}]+)?\s}}/g;
+const variableRegex = /{{\s([^}}]+)?\s}}/g;
 
 function parseTemplate(templatePath, variables, callback){
   let template = fileManager.init(templatePath);
@@ -20,7 +20,7 @@ function parseTemplate(templatePath, variables, callback){
   while(match = variableRegex.exec(template)){
     console.log(match);
     console.log(variables);
-    template = template.replace(match[0], 'var ' + match[1] + ' = ' +variables[match[1]]);
+    template = template.replace(match[0], variables[match[1]]);
   }
   return template;
 }
